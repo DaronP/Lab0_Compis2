@@ -1,4 +1,4 @@
-grammar Typescript;
+grammar typescript;
 
 TRUE          : 'true';
 FALSE         : 'false';
