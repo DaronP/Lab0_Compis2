@@ -1,4 +1,4 @@
-# Generated from .\typescript.g4 by ANTLR 4.10.1
+# Generated from .\typescript.g4 by ANTLR 4.10
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .typescriptParser import typescriptParser

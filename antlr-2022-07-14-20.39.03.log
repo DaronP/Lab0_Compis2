@@ -1,0 +1,342 @@
+2022-07-14 20:39:02:259 grammar LogManager.java:25 before: (COMBINED_GRAMMAR typescript (RULES (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE DOT (BLOCK (ALT '.'))) (RULE COLON (BLOCK (ALT ':'))) (RULE COMMA (BLOCK (ALT ','))) (RULE SEMICOLON (BLOCK (ALT ';'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE POWER (BLOCK (ALT '**'))) (RULE ROUND_LEFT (BLOCK (ALT '('))) (RULE ROUND_RIGHT (BLOCK (ALT ')'))) (RULE CURLY_LEFT (BLOCK (ALT '{'))) (RULE CURLY_RIGHT (BLOCK (ALT '}'))) (RULE BRACKET_LEFT (BLOCK (ALT '['))) (RULE BRACKET_RIGHT (BLOCK (ALT ']'))) (RULE AND (BLOCK (ALT '&&'))) (RULE OR (BLOCK (ALT '||'))) (RULE NOT (BLOCK (ALT '!'))) (RULE OPTIONAL (BLOCK (ALT '?'))) (RULE EQ (BLOCK (ALT '=='))) (RULE STRICT_EQ (BLOCK (ALT '==='))) (RULE NEQ (BLOCK (ALT '!='))) (RULE STRICT_NEQ (BLOCK (ALT '!=='))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GT (BLOCK (ALT '>'))) (RULE GE (BLOCK (ALT '>='))) (RULE IF (BLOCK (ALT 'if'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE FUNCTION (BLOCK (ALT 'function'))) (RULE STRING (BLOCK (ALT 'string'))) (RULE NUMBER (BLOCK (ALT 'number'))) (RULE BOOLEAN (BLOCK (ALT 'boolean'))) (RULE ARROW (BLOCK (ALT '=>'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE FOR (BLOCK (ALT 'for'))) (RULE IN (BLOCK (ALT 'in'))) (RULE OF (BLOCK (ALT 'of'))) (RULE CONST (BLOCK (ALT 'const'))) (RULE VAR (BLOCK (ALT 'var'))) (RULE LET (BLOCK (ALT 'let'))) (RULE EQUAL (BLOCK (ALT '='))) (RULE BREAK (BLOCK (ALT 'break'))) (RULE CONTINUE (BLOCK (ALT 'continue'))) (RULE DELETE (BLOCK (ALT 'delete'))) (RULE DO (BLOCK (ALT 'do'))) (RULE IDENTIFIER (BLOCK (ALT Letter (* (BLOCK (ALT LetterOrDigit)))))) (RULE CHARS (BLOCK (ALT (BLOCK (ALT '"' (* (BLOCK (ALT StringCharacter))) '"'))) (ALT (BLOCK (ALT '\'' (* (BLOCK (ALT CharSequence))) '\''))))) (RULE DIGITS (BLOCK (ALT (+ (BLOCK (ALT Digit))) (? (BLOCK (ALT (BLOCK (ALT DOT)) (+ (BLOCK (ALT Digit))))))))) (RULE Digit (RULEMODIFIERS fragment) (BLOCK (ALT (? (BLOCK (ALT '-'))) [0-9]))) (RULE Letter (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z]))) (RULE LetterOrDigit (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z0-9_]))) (RULE StringCharacter (RULEMODIFIERS fragment) (BLOCK (ALT (~ (SET '"'))))) (RULE CharSequence (RULEMODIFIERS fragment) (BLOCK (ALT (~ (SET '\''))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n\u000C])))) skip))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '//' (* (BLOCK (ALT (~ (SET [\r\n])))))) skip))) (RULE WHITESPACE (BLOCK (LEXER_ALT_ACTION (ALT ' ') skip))) (RULE sAll (BLOCK (ALT (* (BLOCK (ALT sInvocation) (ALT sProperty) (ALT sExpression) (ALT sTerm) (ALT sValue) (ALT sControl) (ALT sReturn) (ALT sFunction) (ALT sStatement))) EOF))) (RULE sOperand (BLOCK (ALT sNumber) (ALT sProperty) (ALT sInvocation))) (RULE sOperator (BLOCK (ALT sPlus) (ALT sMinus) (ALT sMul) (ALT sDiv) (ALT sPower))) (RULE sExpression (BLOCK (ALT sConcatExpression) (ALT sArithmeticExpression) (ALT sBooleanExpression) (ALT sNumberExpression) (ALT sStringExpression))) (RULE sTerm (BLOCK (ALT sArithmeticTerm) (ALT sBooleanTerm))) (RULE sValue (BLOCK (ALT sNumber) (ALT sBoolean) (ALT sString) (ALT sArray) (ALT sMap))) (RULE sInvocation (BLOCK (ALT sPropertyAccess) (ALT sFunctionAccess) (ALT sFunctionCall) (ALT sPropertyDelete))) (RULE sControl (BLOCK (ALT sIf) (ALT sWhile) (ALT sDoWhile) (ALT sFor) (ALT sForOf) (ALT sForIn) (ALT sEndlessLoop) (ALT sContinue) (ALT sBreak))) (RULE sStatement (BLOCK (ALT sMutableVar) (ALT sImmutableVar) (ALT sAssignment))) (RULE sPlus (BLOCK (ALT PLUS))) (RULE sMinus (BLOCK (ALT MINUS))) (RULE sMul (BLOCK (ALT MUL))) (RULE sDiv (BLOCK (ALT DIV))) (RULE sPower (BLOCK (ALT POWER))) (RULE sAnd (BLOCK (ALT AND))) (RULE sOr (BLOCK (ALT OR))) (RULE sNot (BLOCK (ALT NOT))) (RULE sEquals (BLOCK (ALT EQ) (ALT STRICT_EQ))) (RULE sNotEquals (BLOCK (ALT NEQ) (ALT STRICT_NEQ))) (RULE sLowerThan (BLOCK (ALT LT))) (RULE sLowerEquals (BLOCK (ALT LE))) (RULE sGreaterThan (BLOCK (ALT GT))) (RULE sGreaterEquals (BLOCK (ALT GE))) (RULE sArithmeticExpression (BLOCK (ALT (BLOCK (ALT sOperand) (ALT sArithmeticTerm)) (+ (BLOCK (ALT sOperator (BLOCK (ALT sOperand) (ALT sArithmeticTerm)))))))) (RULE sArithmeticTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sOperand (+ (BLOCK (ALT sOperator sOperand)))))) (ALT sArithmeticTerm)) ROUND_RIGHT))) (RULE sBooleanOperand (BLOCK (ALT (* (BLOCK (ALT sNot))) (BLOCK (ALT sValue) (ALT sProperty) (ALT sInvocation))))) (RULE sBooleanOperator (BLOCK (ALT sAnd) (ALT sOr) (ALT sNot) (ALT sEquals) (ALT sNotEquals))) (RULE sBooleanExpression (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT sBooleanOperand))) (ALT sBooleanTerm)) (* (BLOCK (ALT sBooleanOperator (BLOCK (ALT sBooleanOperand) (ALT sBooleanTerm)))))))) (RULE sBooleanTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sBooleanOperand (+ (BLOCK (ALT sBooleanOperator sBooleanOperand)))))) (ALT sBooleanTerm)) ROUND_RIGHT))) (RULE sNumberOperand (BLOCK (ALT sNumber) (ALT sProperty))) (RULE sNumberOperator (BLOCK (ALT sEquals) (ALT sNotEquals) (ALT sLowerThan) (ALT sLowerEquals) (ALT sGreaterThan) (ALT sGreaterEquals))) (RULE sNumberExpression (BLOCK (ALT (BLOCK (ALT sNumberOperand) (ALT sNumberTerm)) (+ (BLOCK (ALT sNumberOperator (BLOCK (ALT sNumberOperand) (ALT sNumberTerm)))))))) (RULE sNumberTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sNumberOperand (+ (BLOCK (ALT sNumberOperator sNumberOperand)))))) (ALT sNumberTerm)) ROUND_RIGHT))) (RULE sStringOperand (BLOCK (ALT sString))) (RULE sStringOperator (BLOCK (ALT sEquals) (ALT sNotEquals))) (RULE sStringExpression (BLOCK (ALT (BLOCK (ALT sStringOperand) (ALT sStringTerm)) (+ (BLOCK (ALT sStringOperator (BLOCK (ALT sStringOperand) (ALT sStringTerm)))))))) (RULE sStringTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sStringOperand (+ (BLOCK (ALT sStringOperator sStringOperand)))))) (ALT sStringTerm)) ROUND_RIGHT))) (RULE sConcatOperand (BLOCK (ALT sString))) (RULE sConcatExpression (BLOCK (ALT sConcatBoth) (ALT sConcatLeft) (ALT sConcatRight))) (RULE sConcatLeft (BLOCK (ALT sString sPlus (BLOCK (ALT sValue) (ALT sProperty))))) (RULE sConcatRight (BLOCK (ALT (BLOCK (ALT sInvocation) (ALT sProperty)) sPlus sString))) (RULE sConcatBoth (BLOCK (ALT sString (+ (BLOCK (ALT sPlus sString)))))) (RULE sType (BLOCK (ALT STRING) (ALT NUMBER) (ALT BOOLEAN))) (RULE sOptional (BLOCK (ALT OPTIONAL))) (RULE sPropertyDelete (BLOCK (ALT DELETE sPropertyAccess))) (RULE sFunction (BLOCK (ALT sFunctionHead sFunctionTail))) (RULE sFunctionArg (BLOCK (ALT sValue) (ALT sExpression) (ALT sFunctionLambda) (ALT sInvocation))) (RULE sFunctionArgs (BLOCK (ALT sFunctionArg (* (BLOCK (ALT COMMA sFunctionArg)))))) (RULE sFunctionArgDef (BLOCK (ALT sProperty (? (BLOCK (ALT COLON sType)))))) (RULE sFunctionArgDefs (BLOCK (ALT sFunctionArgDef (* (BLOCK (ALT COMMA sFunctionArgDef)))))) (RULE sFunctionHead (BLOCK (ALT FUNCTION IDENTIFIER ROUND_LEFT (? (BLOCK (ALT sFunctionArgDefs))) ROUND_RIGHT (? (BLOCK (ALT COLON sType)))))) (RULE sFunctionTail (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))) (RULE sFunctionCall (BLOCK (ALT IDENTIFIER ROUND_LEFT (? (BLOCK (ALT sFunctionArgs))) ROUND_RIGHT (? (BLOCK (ALT SEMICOLON)))))) (RULE sFunctionLambda (BLOCK (ALT ROUND_LEFT sFunctionArgDefs ROUND_RIGHT ARROW (BLOCK (ALT sExpression) (ALT sFunctionTail))))) (RULE sProperty (BLOCK (ALT IDENTIFIER))) (RULE sPropertyAware (BLOCK (ALT sString) (ALT sProperty))) (RULE sPropertyAccess (BLOCK (ALT sPropertyAware (+ (BLOCK (ALT (? (BLOCK (ALT sOptional))) (BLOCK (ALT DOT sProperty))) (ALT (BLOCK (ALT BRACKET_LEFT (BLOCK (ALT sNumber) (ALT sString)) BRACKET_RIGHT)))))))) (RULE sFunctionAware (BLOCK (ALT sString) (ALT sProperty) (ALT sArray))) (RULE sFunctionAccess (BLOCK (ALT sFunctionAware (+ (BLOCK (ALT DOT sFunctionCall)))))) (RULE sLine (BLOCK (ALT (BLOCK (ALT sControl) (ALT sAssignment) (ALT sInvocation) (ALT sReturn)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sBody (BLOCK (ALT (* (BLOCK (ALT sControl) (ALT sAssignment) (ALT sInvocation))) (? (BLOCK (ALT sReturn))) (? (BLOCK (ALT SEMICOLON)))))) (RULE sReturn (BLOCK (ALT RETURN (BLOCK (ALT sValue) (ALT sExpression) (ALT sProperty) (ALT sInvocation))))) (RULE sIf (BLOCK (ALT IF ROUND_LEFT sExpression ROUND_RIGHT (BLOCK (ALT sLine) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT)))) (* (BLOCK (ALT sElseIf))) (? (BLOCK (ALT sElse)))))) (RULE sElse (BLOCK (ALT ELSE (BLOCK (ALT sReturn) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))))))) (RULE sElseIf (BLOCK (ALT ELSE IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (BLOCK (ALT sReturn) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))))))) (RULE sString (BLOCK (ALT CHARS))) (RULE sNumber (BLOCK (ALT DIGITS))) (RULE sBoolean (BLOCK (ALT TRUE) (ALT FALSE))) (RULE sArray (BLOCK (ALT BRACKET_LEFT (? (BLOCK (ALT sValue (* (BLOCK (ALT COMMA sValue)))))) BRACKET_RIGHT))) (RULE sMap (BLOCK (ALT CURLY_LEFT (? (BLOCK (ALT sString COLON sValue (* (BLOCK (ALT COMMA sString COLON sValue)))))) CURLY_RIGHT))) (RULE sEndlessLoop (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT WHILE ROUND_LEFT TRUE ROUND_RIGHT))) (ALT (BLOCK (ALT FOR ROUND_LEFT SEMICOLON SEMICOLON ROUND_RIGHT)))) sLoopTail))) (RULE sWhile (BLOCK (ALT WHILE ROUND_LEFT sExpression ROUND_RIGHT sLoopTail))) (RULE sDoWhile (BLOCK (ALT DO sLoopTail WHILE ROUND_LEFT sExpression ROUND_RIGHT))) (RULE sFor (BLOCK (ALT FOR ROUND_LEFT sStatement SEMICOLON sNumberExpression SEMICOLON (BLOCK (ALT sIncrement) (ALT sDecrement)) ROUND_RIGHT sLoopTail))) (RULE sForOf (BLOCK (ALT FOR ROUND_LEFT (BLOCK (ALT VAR) (ALT LET)) IDENTIFIER OF (BLOCK (ALT sArray) (ALT sString)) ROUND_RIGHT sLoopTail))) (RULE sForIn (BLOCK (ALT FOR ROUND_LEFT (BLOCK (ALT VAR) (ALT LET)) IDENTIFIER IN sArray ROUND_RIGHT sLoopTail))) (RULE sLoopTail (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))) (RULE sContinue (BLOCK (ALT CONTINUE))) (RULE sBreak (BLOCK (ALT BREAK))) (RULE sMutableVar (BLOCK (ALT (BLOCK (ALT VAR) (ALT LET)) IDENTIFIER EQUAL (BLOCK (ALT sExpression) (ALT sValue) (ALT sInvocation)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sImmutableVar (BLOCK (ALT CONST IDENTIFIER EQUAL (BLOCK (ALT sExpression) (ALT sValue) (ALT sInvocation)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sAssignment (BLOCK (ALT (BLOCK (ALT sProperty) (ALT sPropertyAccess)) EQUAL (BLOCK (ALT sValue) (ALT sExpression) (ALT sInvocation) (ALT sProperty)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sIncrement (BLOCK (ALT sProperty PLUS PLUS (? (BLOCK (ALT SEMICOLON)))))) (RULE sDecrement (BLOCK (ALT sProperty MINUS MINUS (? (BLOCK (ALT SEMICOLON))))))))
+2022-07-14 20:39:02:339 grammar LogManager.java:25 after: (COMBINED_GRAMMAR typescript (RULES (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE DOT (BLOCK (ALT '.'))) (RULE COLON (BLOCK (ALT ':'))) (RULE COMMA (BLOCK (ALT ','))) (RULE SEMICOLON (BLOCK (ALT ';'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE POWER (BLOCK (ALT '**'))) (RULE ROUND_LEFT (BLOCK (ALT '('))) (RULE ROUND_RIGHT (BLOCK (ALT ')'))) (RULE CURLY_LEFT (BLOCK (ALT '{'))) (RULE CURLY_RIGHT (BLOCK (ALT '}'))) (RULE BRACKET_LEFT (BLOCK (ALT '['))) (RULE BRACKET_RIGHT (BLOCK (ALT ']'))) (RULE AND (BLOCK (ALT '&&'))) (RULE OR (BLOCK (ALT '||'))) (RULE NOT (BLOCK (ALT '!'))) (RULE OPTIONAL (BLOCK (ALT '?'))) (RULE EQ (BLOCK (ALT '=='))) (RULE STRICT_EQ (BLOCK (ALT '==='))) (RULE NEQ (BLOCK (ALT '!='))) (RULE STRICT_NEQ (BLOCK (ALT '!=='))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GT (BLOCK (ALT '>'))) (RULE GE (BLOCK (ALT '>='))) (RULE IF (BLOCK (ALT 'if'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE FUNCTION (BLOCK (ALT 'function'))) (RULE STRING (BLOCK (ALT 'string'))) (RULE NUMBER (BLOCK (ALT 'number'))) (RULE BOOLEAN (BLOCK (ALT 'boolean'))) (RULE ARROW (BLOCK (ALT '=>'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE FOR (BLOCK (ALT 'for'))) (RULE IN (BLOCK (ALT 'in'))) (RULE OF (BLOCK (ALT 'of'))) (RULE CONST (BLOCK (ALT 'const'))) (RULE VAR (BLOCK (ALT 'var'))) (RULE LET (BLOCK (ALT 'let'))) (RULE EQUAL (BLOCK (ALT '='))) (RULE BREAK (BLOCK (ALT 'break'))) (RULE CONTINUE (BLOCK (ALT 'continue'))) (RULE DELETE (BLOCK (ALT 'delete'))) (RULE DO (BLOCK (ALT 'do'))) (RULE IDENTIFIER (BLOCK (ALT Letter (* (BLOCK (ALT LetterOrDigit)))))) (RULE CHARS (BLOCK (ALT (BLOCK (ALT '"' (* (BLOCK (ALT StringCharacter))) '"'))) (ALT (BLOCK (ALT '\'' (* (BLOCK (ALT CharSequence))) '\''))))) (RULE DIGITS (BLOCK (ALT (+ (BLOCK (ALT Digit))) (? (BLOCK (ALT (BLOCK (ALT DOT)) (+ (BLOCK (ALT Digit))))))))) (RULE Digit (RULEMODIFIERS fragment) (BLOCK (ALT (? (BLOCK (ALT '-'))) [0-9]))) (RULE Letter (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z]))) (RULE LetterOrDigit (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z0-9_]))) (RULE StringCharacter (RULEMODIFIERS fragment) (BLOCK (ALT (~ (SET '"'))))) (RULE CharSequence (RULEMODIFIERS fragment) (BLOCK (ALT (~ (SET '\''))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n\u000C])))) skip))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '//' (* (BLOCK (ALT (~ (SET [\r\n])))))) skip))) (RULE WHITESPACE (BLOCK (LEXER_ALT_ACTION (ALT ' ') skip))) (RULE sAll (BLOCK (ALT (* (BLOCK (ALT sInvocation) (ALT sProperty) (ALT sExpression) (ALT sTerm) (ALT sValue) (ALT sControl) (ALT sReturn) (ALT sFunction) (ALT sStatement))) EOF))) (RULE sOperand (BLOCK (ALT sNumber) (ALT sProperty) (ALT sInvocation))) (RULE sOperator (BLOCK (ALT sPlus) (ALT sMinus) (ALT sMul) (ALT sDiv) (ALT sPower))) (RULE sExpression (BLOCK (ALT sConcatExpression) (ALT sArithmeticExpression) (ALT sBooleanExpression) (ALT sNumberExpression) (ALT sStringExpression))) (RULE sTerm (BLOCK (ALT sArithmeticTerm) (ALT sBooleanTerm))) (RULE sValue (BLOCK (ALT sNumber) (ALT sBoolean) (ALT sString) (ALT sArray) (ALT sMap))) (RULE sInvocation (BLOCK (ALT sPropertyAccess) (ALT sFunctionAccess) (ALT sFunctionCall) (ALT sPropertyDelete))) (RULE sControl (BLOCK (ALT sIf) (ALT sWhile) (ALT sDoWhile) (ALT sFor) (ALT sForOf) (ALT sForIn) (ALT sEndlessLoop) (ALT sContinue) (ALT sBreak))) (RULE sStatement (BLOCK (ALT sMutableVar) (ALT sImmutableVar) (ALT sAssignment))) (RULE sPlus (BLOCK (ALT PLUS))) (RULE sMinus (BLOCK (ALT MINUS))) (RULE sMul (BLOCK (ALT MUL))) (RULE sDiv (BLOCK (ALT DIV))) (RULE sPower (BLOCK (ALT POWER))) (RULE sAnd (BLOCK (ALT AND))) (RULE sOr (BLOCK (ALT OR))) (RULE sNot (BLOCK (ALT NOT))) (RULE sEquals (BLOCK (ALT (SET EQ STRICT_EQ)))) (RULE sNotEquals (BLOCK (ALT (SET NEQ STRICT_NEQ)))) (RULE sLowerThan (BLOCK (ALT LT))) (RULE sLowerEquals (BLOCK (ALT LE))) (RULE sGreaterThan (BLOCK (ALT GT))) (RULE sGreaterEquals (BLOCK (ALT GE))) (RULE sArithmeticExpression (BLOCK (ALT (BLOCK (ALT sOperand) (ALT sArithmeticTerm)) (+ (BLOCK (ALT sOperator (BLOCK (ALT sOperand) (ALT sArithmeticTerm)))))))) (RULE sArithmeticTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sOperand (+ (BLOCK (ALT sOperator sOperand)))))) (ALT sArithmeticTerm)) ROUND_RIGHT))) (RULE sBooleanOperand (BLOCK (ALT (* (BLOCK (ALT sNot))) (BLOCK (ALT sValue) (ALT sProperty) (ALT sInvocation))))) (RULE sBooleanOperator (BLOCK (ALT sAnd) (ALT sOr) (ALT sNot) (ALT sEquals) (ALT sNotEquals))) (RULE sBooleanExpression (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT sBooleanOperand))) (ALT sBooleanTerm)) (* (BLOCK (ALT sBooleanOperator (BLOCK (ALT sBooleanOperand) (ALT sBooleanTerm)))))))) (RULE sBooleanTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sBooleanOperand (+ (BLOCK (ALT sBooleanOperator sBooleanOperand)))))) (ALT sBooleanTerm)) ROUND_RIGHT))) (RULE sNumberOperand (BLOCK (ALT sNumber) (ALT sProperty))) (RULE sNumberOperator (BLOCK (ALT sEquals) (ALT sNotEquals) (ALT sLowerThan) (ALT sLowerEquals) (ALT sGreaterThan) (ALT sGreaterEquals))) (RULE sNumberExpression (BLOCK (ALT (BLOCK (ALT sNumberOperand) (ALT sNumberTerm)) (+ (BLOCK (ALT sNumberOperator (BLOCK (ALT sNumberOperand) (ALT sNumberTerm)))))))) (RULE sNumberTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sNumberOperand (+ (BLOCK (ALT sNumberOperator sNumberOperand)))))) (ALT sNumberTerm)) ROUND_RIGHT))) (RULE sStringOperand (BLOCK (ALT sString))) (RULE sStringOperator (BLOCK (ALT sEquals) (ALT sNotEquals))) (RULE sStringExpression (BLOCK (ALT (BLOCK (ALT sStringOperand) (ALT sStringTerm)) (+ (BLOCK (ALT sStringOperator (BLOCK (ALT sStringOperand) (ALT sStringTerm)))))))) (RULE sStringTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sStringOperand (+ (BLOCK (ALT sStringOperator sStringOperand)))))) (ALT sStringTerm)) ROUND_RIGHT))) (RULE sConcatOperand (BLOCK (ALT sString))) (RULE sConcatExpression (BLOCK (ALT sConcatBoth) (ALT sConcatLeft) (ALT sConcatRight))) (RULE sConcatLeft (BLOCK (ALT sString sPlus (BLOCK (ALT sValue) (ALT sProperty))))) (RULE sConcatRight (BLOCK (ALT (BLOCK (ALT sInvocation) (ALT sProperty)) sPlus sString))) (RULE sConcatBoth (BLOCK (ALT sString (+ (BLOCK (ALT sPlus sString)))))) (RULE sType (BLOCK (ALT (SET STRING NUMBER BOOLEAN)))) (RULE sOptional (BLOCK (ALT OPTIONAL))) (RULE sPropertyDelete (BLOCK (ALT DELETE sPropertyAccess))) (RULE sFunction (BLOCK (ALT sFunctionHead sFunctionTail))) (RULE sFunctionArg (BLOCK (ALT sValue) (ALT sExpression) (ALT sFunctionLambda) (ALT sInvocation))) (RULE sFunctionArgs (BLOCK (ALT sFunctionArg (* (BLOCK (ALT COMMA sFunctionArg)))))) (RULE sFunctionArgDef (BLOCK (ALT sProperty (? (BLOCK (ALT COLON sType)))))) (RULE sFunctionArgDefs (BLOCK (ALT sFunctionArgDef (* (BLOCK (ALT COMMA sFunctionArgDef)))))) (RULE sFunctionHead (BLOCK (ALT FUNCTION IDENTIFIER ROUND_LEFT (? (BLOCK (ALT sFunctionArgDefs))) ROUND_RIGHT (? (BLOCK (ALT COLON sType)))))) (RULE sFunctionTail (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))) (RULE sFunctionCall (BLOCK (ALT IDENTIFIER ROUND_LEFT (? (BLOCK (ALT sFunctionArgs))) ROUND_RIGHT (? (BLOCK (ALT SEMICOLON)))))) (RULE sFunctionLambda (BLOCK (ALT ROUND_LEFT sFunctionArgDefs ROUND_RIGHT ARROW (BLOCK (ALT sExpression) (ALT sFunctionTail))))) (RULE sProperty (BLOCK (ALT IDENTIFIER))) (RULE sPropertyAware (BLOCK (ALT sString) (ALT sProperty))) (RULE sPropertyAccess (BLOCK (ALT sPropertyAware (+ (BLOCK (ALT (? (BLOCK (ALT sOptional))) (BLOCK (ALT DOT sProperty))) (ALT (BLOCK (ALT BRACKET_LEFT (BLOCK (ALT sNumber) (ALT sString)) BRACKET_RIGHT)))))))) (RULE sFunctionAware (BLOCK (ALT sString) (ALT sProperty) (ALT sArray))) (RULE sFunctionAccess (BLOCK (ALT sFunctionAware (+ (BLOCK (ALT DOT sFunctionCall)))))) (RULE sLine (BLOCK (ALT (BLOCK (ALT sControl) (ALT sAssignment) (ALT sInvocation) (ALT sReturn)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sBody (BLOCK (ALT (* (BLOCK (ALT sControl) (ALT sAssignment) (ALT sInvocation))) (? (BLOCK (ALT sReturn))) (? (BLOCK (ALT SEMICOLON)))))) (RULE sReturn (BLOCK (ALT RETURN (BLOCK (ALT sValue) (ALT sExpression) (ALT sProperty) (ALT sInvocation))))) (RULE sIf (BLOCK (ALT IF ROUND_LEFT sExpression ROUND_RIGHT (BLOCK (ALT sLine) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT)))) (* (BLOCK (ALT sElseIf))) (? (BLOCK (ALT sElse)))))) (RULE sElse (BLOCK (ALT ELSE (BLOCK (ALT sReturn) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))))))) (RULE sElseIf (BLOCK (ALT ELSE IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (BLOCK (ALT sReturn) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))))))) (RULE sString (BLOCK (ALT CHARS))) (RULE sNumber (BLOCK (ALT DIGITS))) (RULE sBoolean (BLOCK (ALT (SET TRUE FALSE)))) (RULE sArray (BLOCK (ALT BRACKET_LEFT (? (BLOCK (ALT sValue (* (BLOCK (ALT COMMA sValue)))))) BRACKET_RIGHT))) (RULE sMap (BLOCK (ALT CURLY_LEFT (? (BLOCK (ALT sString COLON sValue (* (BLOCK (ALT COMMA sString COLON sValue)))))) CURLY_RIGHT))) (RULE sEndlessLoop (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT WHILE ROUND_LEFT TRUE ROUND_RIGHT))) (ALT (BLOCK (ALT FOR ROUND_LEFT SEMICOLON SEMICOLON ROUND_RIGHT)))) sLoopTail))) (RULE sWhile (BLOCK (ALT WHILE ROUND_LEFT sExpression ROUND_RIGHT sLoopTail))) (RULE sDoWhile (BLOCK (ALT DO sLoopTail WHILE ROUND_LEFT sExpression ROUND_RIGHT))) (RULE sFor (BLOCK (ALT FOR ROUND_LEFT sStatement SEMICOLON sNumberExpression SEMICOLON (BLOCK (ALT sIncrement) (ALT sDecrement)) ROUND_RIGHT sLoopTail))) (RULE sForOf (BLOCK (ALT FOR ROUND_LEFT (SET VAR LET) IDENTIFIER OF (BLOCK (ALT sArray) (ALT sString)) ROUND_RIGHT sLoopTail))) (RULE sForIn (BLOCK (ALT FOR ROUND_LEFT (SET VAR LET) IDENTIFIER IN sArray ROUND_RIGHT sLoopTail))) (RULE sLoopTail (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))) (RULE sContinue (BLOCK (ALT CONTINUE))) (RULE sBreak (BLOCK (ALT BREAK))) (RULE sMutableVar (BLOCK (ALT (SET VAR LET) IDENTIFIER EQUAL (BLOCK (ALT sExpression) (ALT sValue) (ALT sInvocation)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sImmutableVar (BLOCK (ALT CONST IDENTIFIER EQUAL (BLOCK (ALT sExpression) (ALT sValue) (ALT sInvocation)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sAssignment (BLOCK (ALT (BLOCK (ALT sProperty) (ALT sPropertyAccess)) EQUAL (BLOCK (ALT sValue) (ALT sExpression) (ALT sInvocation) (ALT sProperty)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sIncrement (BLOCK (ALT sProperty PLUS PLUS (? (BLOCK (ALT SEMICOLON)))))) (RULE sDecrement (BLOCK (ALT sProperty MINUS MINUS (? (BLOCK (ALT SEMICOLON))))))))
+2022-07-14 20:39:02:403 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR typescript (RULES (RULE sAll (BLOCK (ALT (* (BLOCK (ALT sInvocation) (ALT sProperty) (ALT sExpression) (ALT sTerm) (ALT sValue) (ALT sControl) (ALT sReturn) (ALT sFunction) (ALT sStatement))) EOF))) (RULE sOperand (BLOCK (ALT sNumber) (ALT sProperty) (ALT sInvocation))) (RULE sOperator (BLOCK (ALT sPlus) (ALT sMinus) (ALT sMul) (ALT sDiv) (ALT sPower))) (RULE sExpression (BLOCK (ALT sConcatExpression) (ALT sArithmeticExpression) (ALT sBooleanExpression) (ALT sNumberExpression) (ALT sStringExpression))) (RULE sTerm (BLOCK (ALT sArithmeticTerm) (ALT sBooleanTerm))) (RULE sValue (BLOCK (ALT sNumber) (ALT sBoolean) (ALT sString) (ALT sArray) (ALT sMap))) (RULE sInvocation (BLOCK (ALT sPropertyAccess) (ALT sFunctionAccess) (ALT sFunctionCall) (ALT sPropertyDelete))) (RULE sControl (BLOCK (ALT sIf) (ALT sWhile) (ALT sDoWhile) (ALT sFor) (ALT sForOf) (ALT sForIn) (ALT sEndlessLoop) (ALT sContinue) (ALT sBreak))) (RULE sStatement (BLOCK (ALT sMutableVar) (ALT sImmutableVar) (ALT sAssignment))) (RULE sPlus (BLOCK (ALT PLUS))) (RULE sMinus (BLOCK (ALT MINUS))) (RULE sMul (BLOCK (ALT MUL))) (RULE sDiv (BLOCK (ALT DIV))) (RULE sPower (BLOCK (ALT POWER))) (RULE sAnd (BLOCK (ALT AND))) (RULE sOr (BLOCK (ALT OR))) (RULE sNot (BLOCK (ALT NOT))) (RULE sEquals (BLOCK (ALT (SET EQ STRICT_EQ)))) (RULE sNotEquals (BLOCK (ALT (SET NEQ STRICT_NEQ)))) (RULE sLowerThan (BLOCK (ALT LT))) (RULE sLowerEquals (BLOCK (ALT LE))) (RULE sGreaterThan (BLOCK (ALT GT))) (RULE sGreaterEquals (BLOCK (ALT GE))) (RULE sArithmeticExpression (BLOCK (ALT (BLOCK (ALT sOperand) (ALT sArithmeticTerm)) (+ (BLOCK (ALT sOperator (BLOCK (ALT sOperand) (ALT sArithmeticTerm)))))))) (RULE sArithmeticTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sOperand (+ (BLOCK (ALT sOperator sOperand)))))) (ALT sArithmeticTerm)) ROUND_RIGHT))) (RULE sBooleanOperand (BLOCK (ALT (* (BLOCK (ALT sNot))) (BLOCK (ALT sValue) (ALT sProperty) (ALT sInvocation))))) (RULE sBooleanOperator (BLOCK (ALT sAnd) (ALT sOr) (ALT sNot) (ALT sEquals) (ALT sNotEquals))) (RULE sBooleanExpression (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT sBooleanOperand))) (ALT sBooleanTerm)) (* (BLOCK (ALT sBooleanOperator (BLOCK (ALT sBooleanOperand) (ALT sBooleanTerm)))))))) (RULE sBooleanTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sBooleanOperand (+ (BLOCK (ALT sBooleanOperator sBooleanOperand)))))) (ALT sBooleanTerm)) ROUND_RIGHT))) (RULE sNumberOperand (BLOCK (ALT sNumber) (ALT sProperty))) (RULE sNumberOperator (BLOCK (ALT sEquals) (ALT sNotEquals) (ALT sLowerThan) (ALT sLowerEquals) (ALT sGreaterThan) (ALT sGreaterEquals))) (RULE sNumberExpression (BLOCK (ALT (BLOCK (ALT sNumberOperand) (ALT sNumberTerm)) (+ (BLOCK (ALT sNumberOperator (BLOCK (ALT sNumberOperand) (ALT sNumberTerm)))))))) (RULE sNumberTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sNumberOperand (+ (BLOCK (ALT sNumberOperator sNumberOperand)))))) (ALT sNumberTerm)) ROUND_RIGHT))) (RULE sStringOperand (BLOCK (ALT sString))) (RULE sStringOperator (BLOCK (ALT sEquals) (ALT sNotEquals))) (RULE sStringExpression (BLOCK (ALT (BLOCK (ALT sStringOperand) (ALT sStringTerm)) (+ (BLOCK (ALT sStringOperator (BLOCK (ALT sStringOperand) (ALT sStringTerm)))))))) (RULE sStringTerm (BLOCK (ALT ROUND_LEFT (BLOCK (ALT (BLOCK (ALT sStringOperand (+ (BLOCK (ALT sStringOperator sStringOperand)))))) (ALT sStringTerm)) ROUND_RIGHT))) (RULE sConcatOperand (BLOCK (ALT sString))) (RULE sConcatExpression (BLOCK (ALT sConcatBoth) (ALT sConcatLeft) (ALT sConcatRight))) (RULE sConcatLeft (BLOCK (ALT sString sPlus (BLOCK (ALT sValue) (ALT sProperty))))) (RULE sConcatRight (BLOCK (ALT (BLOCK (ALT sInvocation) (ALT sProperty)) sPlus sString))) (RULE sConcatBoth (BLOCK (ALT sString (+ (BLOCK (ALT sPlus sString)))))) (RULE sType (BLOCK (ALT (SET STRING NUMBER BOOLEAN)))) (RULE sOptional (BLOCK (ALT OPTIONAL))) (RULE sPropertyDelete (BLOCK (ALT DELETE sPropertyAccess))) (RULE sFunction (BLOCK (ALT sFunctionHead sFunctionTail))) (RULE sFunctionArg (BLOCK (ALT sValue) (ALT sExpression) (ALT sFunctionLambda) (ALT sInvocation))) (RULE sFunctionArgs (BLOCK (ALT sFunctionArg (* (BLOCK (ALT COMMA sFunctionArg)))))) (RULE sFunctionArgDef (BLOCK (ALT sProperty (? (BLOCK (ALT COLON sType)))))) (RULE sFunctionArgDefs (BLOCK (ALT sFunctionArgDef (* (BLOCK (ALT COMMA sFunctionArgDef)))))) (RULE sFunctionHead (BLOCK (ALT FUNCTION IDENTIFIER ROUND_LEFT (? (BLOCK (ALT sFunctionArgDefs))) ROUND_RIGHT (? (BLOCK (ALT COLON sType)))))) (RULE sFunctionTail (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))) (RULE sFunctionCall (BLOCK (ALT IDENTIFIER ROUND_LEFT (? (BLOCK (ALT sFunctionArgs))) ROUND_RIGHT (? (BLOCK (ALT SEMICOLON)))))) (RULE sFunctionLambda (BLOCK (ALT ROUND_LEFT sFunctionArgDefs ROUND_RIGHT ARROW (BLOCK (ALT sExpression) (ALT sFunctionTail))))) (RULE sProperty (BLOCK (ALT IDENTIFIER))) (RULE sPropertyAware (BLOCK (ALT sString) (ALT sProperty))) (RULE sPropertyAccess (BLOCK (ALT sPropertyAware (+ (BLOCK (ALT (? (BLOCK (ALT sOptional))) (BLOCK (ALT DOT sProperty))) (ALT (BLOCK (ALT BRACKET_LEFT (BLOCK (ALT sNumber) (ALT sString)) BRACKET_RIGHT)))))))) (RULE sFunctionAware (BLOCK (ALT sString) (ALT sProperty) (ALT sArray))) (RULE sFunctionAccess (BLOCK (ALT sFunctionAware (+ (BLOCK (ALT DOT sFunctionCall)))))) (RULE sLine (BLOCK (ALT (BLOCK (ALT sControl) (ALT sAssignment) (ALT sInvocation) (ALT sReturn)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sBody (BLOCK (ALT (* (BLOCK (ALT sControl) (ALT sAssignment) (ALT sInvocation))) (? (BLOCK (ALT sReturn))) (? (BLOCK (ALT SEMICOLON)))))) (RULE sReturn (BLOCK (ALT RETURN (BLOCK (ALT sValue) (ALT sExpression) (ALT sProperty) (ALT sInvocation))))) (RULE sIf (BLOCK (ALT IF ROUND_LEFT sExpression ROUND_RIGHT (BLOCK (ALT sLine) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT)))) (* (BLOCK (ALT sElseIf))) (? (BLOCK (ALT sElse)))))) (RULE sElse (BLOCK (ALT ELSE (BLOCK (ALT sReturn) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))))))) (RULE sElseIf (BLOCK (ALT ELSE IF ROUND_LEFT sBooleanExpression ROUND_RIGHT (BLOCK (ALT sReturn) (ALT (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))))))) (RULE sString (BLOCK (ALT CHARS))) (RULE sNumber (BLOCK (ALT DIGITS))) (RULE sBoolean (BLOCK (ALT (SET TRUE FALSE)))) (RULE sArray (BLOCK (ALT BRACKET_LEFT (? (BLOCK (ALT sValue (* (BLOCK (ALT COMMA sValue)))))) BRACKET_RIGHT))) (RULE sMap (BLOCK (ALT CURLY_LEFT (? (BLOCK (ALT sString COLON sValue (* (BLOCK (ALT COMMA sString COLON sValue)))))) CURLY_RIGHT))) (RULE sEndlessLoop (BLOCK (ALT (BLOCK (ALT (BLOCK (ALT WHILE ROUND_LEFT TRUE ROUND_RIGHT))) (ALT (BLOCK (ALT FOR ROUND_LEFT SEMICOLON SEMICOLON ROUND_RIGHT)))) sLoopTail))) (RULE sWhile (BLOCK (ALT WHILE ROUND_LEFT sExpression ROUND_RIGHT sLoopTail))) (RULE sDoWhile (BLOCK (ALT DO sLoopTail WHILE ROUND_LEFT sExpression ROUND_RIGHT))) (RULE sFor (BLOCK (ALT FOR ROUND_LEFT sStatement SEMICOLON sNumberExpression SEMICOLON (BLOCK (ALT sIncrement) (ALT sDecrement)) ROUND_RIGHT sLoopTail))) (RULE sForOf (BLOCK (ALT FOR ROUND_LEFT (SET VAR LET) IDENTIFIER OF (BLOCK (ALT sArray) (ALT sString)) ROUND_RIGHT sLoopTail))) (RULE sForIn (BLOCK (ALT FOR ROUND_LEFT (SET VAR LET) IDENTIFIER IN sArray ROUND_RIGHT sLoopTail))) (RULE sLoopTail (BLOCK (ALT CURLY_LEFT sBody CURLY_RIGHT))) (RULE sContinue (BLOCK (ALT CONTINUE))) (RULE sBreak (BLOCK (ALT BREAK))) (RULE sMutableVar (BLOCK (ALT (SET VAR LET) IDENTIFIER EQUAL (BLOCK (ALT sExpression) (ALT sValue) (ALT sInvocation)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sImmutableVar (BLOCK (ALT CONST IDENTIFIER EQUAL (BLOCK (ALT sExpression) (ALT sValue) (ALT sInvocation)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sAssignment (BLOCK (ALT (BLOCK (ALT sProperty) (ALT sPropertyAccess)) EQUAL (BLOCK (ALT sValue) (ALT sExpression) (ALT sInvocation) (ALT sProperty)) (? (BLOCK (ALT SEMICOLON)))))) (RULE sIncrement (BLOCK (ALT sProperty PLUS PLUS (? (BLOCK (ALT SEMICOLON)))))) (RULE sDecrement (BLOCK (ALT sProperty MINUS MINUS (? (BLOCK (ALT SEMICOLON))))))))
+2022-07-14 20:39:02:404 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR typescriptLexer (RULES (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE DOT (BLOCK (ALT '.'))) (RULE COLON (BLOCK (ALT ':'))) (RULE COMMA (BLOCK (ALT ','))) (RULE SEMICOLON (BLOCK (ALT ';'))) (RULE PLUS (BLOCK (ALT '+'))) (RULE MINUS (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE POWER (BLOCK (ALT '**'))) (RULE ROUND_LEFT (BLOCK (ALT '('))) (RULE ROUND_RIGHT (BLOCK (ALT ')'))) (RULE CURLY_LEFT (BLOCK (ALT '{'))) (RULE CURLY_RIGHT (BLOCK (ALT '}'))) (RULE BRACKET_LEFT (BLOCK (ALT '['))) (RULE BRACKET_RIGHT (BLOCK (ALT ']'))) (RULE AND (BLOCK (ALT '&&'))) (RULE OR (BLOCK (ALT '||'))) (RULE NOT (BLOCK (ALT '!'))) (RULE OPTIONAL (BLOCK (ALT '?'))) (RULE EQ (BLOCK (ALT '=='))) (RULE STRICT_EQ (BLOCK (ALT '==='))) (RULE NEQ (BLOCK (ALT '!='))) (RULE STRICT_NEQ (BLOCK (ALT '!=='))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GT (BLOCK (ALT '>'))) (RULE GE (BLOCK (ALT '>='))) (RULE IF (BLOCK (ALT 'if'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE FUNCTION (BLOCK (ALT 'function'))) (RULE STRING (BLOCK (ALT 'string'))) (RULE NUMBER (BLOCK (ALT 'number'))) (RULE BOOLEAN (BLOCK (ALT 'boolean'))) (RULE ARROW (BLOCK (ALT '=>'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE FOR (BLOCK (ALT 'for'))) (RULE IN (BLOCK (ALT 'in'))) (RULE OF (BLOCK (ALT 'of'))) (RULE CONST (BLOCK (ALT 'const'))) (RULE VAR (BLOCK (ALT 'var'))) (RULE LET (BLOCK (ALT 'let'))) (RULE EQUAL (BLOCK (ALT '='))) (RULE BREAK (BLOCK (ALT 'break'))) (RULE CONTINUE (BLOCK (ALT 'continue'))) (RULE DELETE (BLOCK (ALT 'delete'))) (RULE DO (BLOCK (ALT 'do'))) (RULE IDENTIFIER (BLOCK (ALT Letter (* (BLOCK (ALT LetterOrDigit)))))) (RULE CHARS (BLOCK (ALT (BLOCK (ALT '"' (* (BLOCK (ALT StringCharacter))) '"'))) (ALT (BLOCK (ALT '\'' (* (BLOCK (ALT CharSequence))) '\''))))) (RULE DIGITS (BLOCK (ALT (+ (BLOCK (ALT Digit))) (? (BLOCK (ALT (BLOCK (ALT DOT)) (+ (BLOCK (ALT Digit))))))))) (RULE Digit (RULEMODIFIERS fragment) (BLOCK (ALT (? (BLOCK (ALT '-'))) [0-9]))) (RULE Letter (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z]))) (RULE LetterOrDigit (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z0-9_]))) (RULE StringCharacter (RULEMODIFIERS fragment) (BLOCK (ALT (~ (SET '"'))))) (RULE CharSequence (RULEMODIFIERS fragment) (BLOCK (ALT (~ (SET '\''))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n\u000C])))) skip))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '//' (* (BLOCK (ALT (~ (SET [\r\n])))))) skip))) (RULE WHITESPACE (BLOCK (LEXER_ALT_ACTION (ALT ' ') skip)))))
+2022-07-14 20:39:02:870 semantics LogManager.java:25 tokens={EOF=-1, TRUE=1, FALSE=2, DOT=3, COLON=4, COMMA=5, SEMICOLON=6, PLUS=7, MINUS=8, MUL=9, DIV=10, POWER=11, ROUND_LEFT=12, ROUND_RIGHT=13, CURLY_LEFT=14, CURLY_RIGHT=15, BRACKET_LEFT=16, BRACKET_RIGHT=17, AND=18, OR=19, NOT=20, OPTIONAL=21, EQ=22, STRICT_EQ=23, NEQ=24, STRICT_NEQ=25, LT=26, LE=27, GT=28, GE=29, IF=30, ELSE=31, RETURN=32, FUNCTION=33, STRING=34, NUMBER=35, BOOLEAN=36, ARROW=37, WHILE=38, FOR=39, IN=40, OF=41, CONST=42, VAR=43, LET=44, EQUAL=45, BREAK=46, CONTINUE=47, DELETE=48, DO=49, IDENTIFIER=50, CHARS=51, DIGITS=52, WS=53, LINE_COMMENT=54, WHITESPACE=55}
+2022-07-14 20:39:02:870 semantics LogManager.java:25 strings={'true'=1, 'false'=2, '.'=3, ':'=4, ','=5, ';'=6, '+'=7, '-'=8, '*'=9, '/'=10, '**'=11, '('=12, ')'=13, '{'=14, '}'=15, '['=16, ']'=17, '&&'=18, '||'=19, '!'=20, '?'=21, '=='=22, '==='=23, '!='=24, '!=='=25, '<'=26, '<='=27, '>'=28, '>='=29, 'if'=30, 'else'=31, 'return'=32, 'function'=33, 'string'=34, 'number'=35, 'boolean'=36, '=>'=37, 'while'=38, 'for'=39, 'in'=40, 'of'=41, 'const'=42, 'var'=43, 'let'=44, '='=45, 'break'=46, 'continue'=47, 'delete'=48, 'do'=49, ' '=55}
+2022-07-14 20:39:02:924 LL1 LogManager.java:25 
+DECISION 0 in rule sAll
+2022-07-14 20:39:02:926 LL1 LogManager.java:25 look=[{16, 48, 50..51}, 50, {1..2, 12, 14, 16, 20, 48, 50..52}, 12, {1..2, 14, 16, 51..52}, {30, 38..39, 46..47, 49}, 32, 33, {42..44, 50..51}]
+2022-07-14 20:39:02:927 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:927 LL1 LogManager.java:25 
+DECISION 1 in rule sAll
+2022-07-14 20:39:02:927 LL1 LogManager.java:25 look=[{1..2, 12, 14, 16, 20, 30, 32..33, 38..39, 42..44, 46..52}, <EOF>]
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 
+DECISION 2 in rule sOperand
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 look=[52, 50, {16, 48, 50..51}]
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 
+DECISION 3 in rule sOperator
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 look=[7, 8, 9, 10, 11]
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 
+DECISION 4 in rule sExpression
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 look=[{16, 48, 50..51}, {12, 16, 48, 50..52}, {1..2, 12, 14, 16, 20, 48, 50..52}, {12, 50, 52}, {12, 51}]
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 
+DECISION 5 in rule sTerm
+2022-07-14 20:39:02:928 LL1 LogManager.java:25 look=[12, 12]
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 
+DECISION 6 in rule sValue
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 look=[52, {1..2}, 51, 16, 14]
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 
+DECISION 7 in rule sInvocation
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 look=[{50..51}, {16, 50..51}, 50, 48]
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 
+DECISION 8 in rule sControl
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 look=[30, 38, 49, 39, 39, 39, {38..39}, 47, 46]
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 
+DECISION 9 in rule sStatement
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 look=[{43..44}, 42, {50..51}]
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 
+DECISION 10 in rule sArithmeticExpression
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 look=[{16, 48, 50..52}, 12]
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:929 LL1 LogManager.java:25 
+DECISION 11 in rule sArithmeticExpression
+2022-07-14 20:39:02:930 LL1 LogManager.java:25 look=[{16, 48, 50..52}, 12]
+2022-07-14 20:39:02:930 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:930 LL1 LogManager.java:25 
+DECISION 12 in rule sArithmeticExpression
+2022-07-14 20:39:02:930 LL1 LogManager.java:25 look=[{7..11}, {<EOF>, 1..2, 5..6, 12..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:930 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:930 LL1 LogManager.java:25 
+DECISION 13 in rule sArithmeticTerm
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 look=[{7..11}, 13]
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 
+DECISION 14 in rule sArithmeticTerm
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 look=[{16, 48, 50..52}, 12]
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 
+DECISION 15 in rule sBooleanOperand
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 look=[20, {1..2, 14, 16, 48, 50..52}]
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 
+DECISION 16 in rule sBooleanOperand
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 look=[{1..2, 14, 16, 51..52}, 50, {16, 48, 50..51}]
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 
+DECISION 17 in rule sBooleanOperator
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 look=[18, 19, 20, {22..23}, {24..25}]
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 
+DECISION 18 in rule sBooleanExpression
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 look=[{1..2, 14, 16, 20, 48, 50..52}, 12]
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:931 LL1 LogManager.java:25 
+DECISION 19 in rule sBooleanExpression
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 look=[{1..2, 14, 16, 20, 48, 50..52}, 12]
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 
+DECISION 20 in rule sBooleanExpression
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 look=[{18..20, 22..25}, {<EOF>, 1..2, 5..6, 12..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 
+DECISION 21 in rule sBooleanTerm
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 look=[{18..20, 22..25}, 13]
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:932 LL1 LogManager.java:25 
+DECISION 22 in rule sBooleanTerm
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 look=[{1..2, 14, 16, 20, 48, 50..52}, 12]
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 
+DECISION 23 in rule sNumberOperand
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 look=[52, 50]
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 
+DECISION 24 in rule sNumberOperator
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 look=[{22..23}, {24..25}, 26, 27, 28, 29]
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 
+DECISION 25 in rule sNumberExpression
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 look=[{50, 52}, 12]
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 
+DECISION 26 in rule sNumberExpression
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 look=[{50, 52}, 12]
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:933 LL1 LogManager.java:25 
+DECISION 27 in rule sNumberExpression
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 look=[{22..29}, {<EOF>, 1..2, 5..6, 12..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 
+DECISION 28 in rule sNumberTerm
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 look=[{22..29}, 13]
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 
+DECISION 29 in rule sNumberTerm
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 look=[{50, 52}, 12]
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 
+DECISION 30 in rule sStringOperator
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 look=[{22..23}, {24..25}]
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 
+DECISION 31 in rule sStringExpression
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 look=[51, 12]
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 
+DECISION 32 in rule sStringExpression
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 look=[51, 12]
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:934 LL1 LogManager.java:25 
+DECISION 33 in rule sStringExpression
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 look=[{22..25}, {<EOF>, 1..2, 5..6, 12..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 
+DECISION 34 in rule sStringTerm
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 look=[{22..25}, 13]
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 
+DECISION 35 in rule sStringTerm
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 look=[51, 12]
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 
+DECISION 36 in rule sConcatExpression
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 look=[51, 51, {16, 48, 50..51}]
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 
+DECISION 37 in rule sConcatLeft
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 look=[{1..2, 14, 16, 51..52}, 50]
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:935 LL1 LogManager.java:25 
+DECISION 38 in rule sConcatRight
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 look=[{16, 48, 50..51}, 50]
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 
+DECISION 39 in rule sConcatBoth
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 look=[7, {<EOF>, 1..2, 5..6, 12..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 
+DECISION 40 in rule sFunctionArg
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 look=[{1..2, 14, 16, 51..52}, {1..2, 12, 14, 16, 20, 48, 50..52}, 12, {16, 48, 50..51}]
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 
+DECISION 41 in rule sFunctionArgs
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 look=[5, 13]
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:936 LL1 LogManager.java:25 
+DECISION 42 in rule sFunctionArgDef
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 look=[4, {5, 13}]
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 
+DECISION 43 in rule sFunctionArgDefs
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 look=[5, 13]
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 
+DECISION 44 in rule sFunctionHead
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 look=[50, 13]
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 
+DECISION 45 in rule sFunctionHead
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 look=[4, 14]
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 
+DECISION 46 in rule sFunctionCall
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 look=[{1..2, 12, 14, 16, 20, 48, 50..52}, 13]
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:937 LL1 LogManager.java:25 
+DECISION 47 in rule sFunctionCall
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 look=[6, {<EOF>, 1..3, 5..16, 18..20, 22..25, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 
+DECISION 48 in rule sFunctionLambda
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 look=[{1..2, 12, 14, 16, 20, 48, 50..52}, 14]
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 
+DECISION 49 in rule sPropertyAware
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 look=[51, 50]
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 
+DECISION 50 in rule sPropertyAccess
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 look=[21, 3]
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 
+DECISION 51 in rule sPropertyAccess
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 look=[52, 51]
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 
+DECISION 52 in rule sPropertyAccess
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 look=[{3, 21}, 16]
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:938 LL1 LogManager.java:25 
+DECISION 53 in rule sPropertyAccess
+2022-07-14 20:39:02:939 LL1 LogManager.java:25 look=[{3, 16, 21}, {<EOF>, 1..2, 5..16, 18..20, 22..25, 30..33, 38..39, 42..52}]
+2022-07-14 20:39:02:939 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:939 LL1 LogManager.java:25 
+DECISION 54 in rule sFunctionAware
+2022-07-14 20:39:02:939 LL1 LogManager.java:25 look=[51, 50, 16]
+2022-07-14 20:39:02:939 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:939 LL1 LogManager.java:25 
+DECISION 55 in rule sFunctionAccess
+2022-07-14 20:39:02:939 LL1 LogManager.java:25 look=[3, {<EOF>, 1..2, 5..16, 18..20, 22..25, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 
+DECISION 56 in rule sLine
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 look=[{30, 38..39, 46..47, 49}, {50..51}, {16, 48, 50..51}, 32]
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 
+DECISION 57 in rule sLine
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 look=[6, {<EOF>, 1..2, 6, 12, 14..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 
+DECISION 58 in rule sBody
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 look=[{30, 38..39, 46..47, 49}, {50..51}, {16, 48, 50..51}]
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 
+DECISION 59 in rule sBody
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 look=[{16, 30, 38..39, 46..51}, {6, 15, 32}]
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 
+DECISION 60 in rule sBody
+2022-07-14 20:39:02:940 LL1 LogManager.java:25 look=[32, {6, 15}]
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 
+DECISION 61 in rule sBody
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 look=[6, 15]
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 
+DECISION 62 in rule sReturn
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 look=[{1..2, 14, 16, 51..52}, {1..2, 12, 14, 16, 20, 48, 50..52}, 50, {16, 48, 50..51}]
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 
+DECISION 63 in rule sIf
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 look=[{16, 30, 32, 38..39, 46..51}, 14]
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 
+DECISION 64 in rule sIf
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 look=[31, {<EOF>, 1..2, 6, 12, 14..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:941 LL1 LogManager.java:25 
+DECISION 65 in rule sIf
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 look=[31, {<EOF>, 1..2, 6, 12, 14..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 
+DECISION 66 in rule sElse
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 look=[32, 14]
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 
+DECISION 67 in rule sElseIf
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 look=[32, 14]
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 
+DECISION 68 in rule sArray
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 look=[5, 17]
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 
+DECISION 69 in rule sArray
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 look=[{1..2, 14, 16, 51..52}, 17]
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 
+DECISION 70 in rule sMap
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 look=[5, 15]
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 
+DECISION 71 in rule sMap
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 look=[51, 15]
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:942 LL1 LogManager.java:25 
+DECISION 72 in rule sEndlessLoop
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 look=[38, 39]
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 
+DECISION 73 in rule sFor
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 look=[50, 50]
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 
+DECISION 74 in rule sForOf
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 look=[16, 51]
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 
+DECISION 75 in rule sMutableVar
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 look=[{1..2, 12, 14, 16, 20, 48, 50..52}, {1..2, 14, 16, 51..52}, {16, 48, 50..51}]
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 
+DECISION 76 in rule sMutableVar
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 look=[6, {<EOF>, 1..2, 6, 12, 14, 16, 20, 30, 32..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:943 LL1 LogManager.java:25 
+DECISION 77 in rule sImmutableVar
+2022-07-14 20:39:02:944 LL1 LogManager.java:25 look=[{1..2, 12, 14, 16, 20, 48, 50..52}, {1..2, 14, 16, 51..52}, {16, 48, 50..51}]
+2022-07-14 20:39:02:944 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:944 LL1 LogManager.java:25 
+DECISION 78 in rule sImmutableVar
+2022-07-14 20:39:02:944 LL1 LogManager.java:25 look=[6, {<EOF>, 1..2, 6, 12, 14, 16, 20, 30, 32..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:944 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:945 LL1 LogManager.java:25 
+DECISION 79 in rule sAssignment
+2022-07-14 20:39:02:945 LL1 LogManager.java:25 look=[50, {50..51}]
+2022-07-14 20:39:02:945 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:945 LL1 LogManager.java:25 
+DECISION 80 in rule sAssignment
+2022-07-14 20:39:02:945 LL1 LogManager.java:25 look=[{1..2, 14, 16, 51..52}, {1..2, 12, 14, 16, 20, 48, 50..52}, {16, 48, 50..51}, 50]
+2022-07-14 20:39:02:945 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:945 LL1 LogManager.java:25 
+DECISION 81 in rule sAssignment
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 look=[6, {<EOF>, 1..2, 6, 12, 14..16, 20, 30..33, 38..39, 42..44, 46..52}]
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 LL(1)? false
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 
+DECISION 82 in rule sIncrement
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 look=[6, 13]
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 LL(1)? true
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 
+DECISION 83 in rule sDecrement
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 look=[6, 13]
+2022-07-14 20:39:02:946 LL1 LogManager.java:25 LL(1)? true

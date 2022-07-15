@@ -7,6 +7,8 @@ from dist.typescriptVisitor import typescriptVisitor
 from dist.typescriptListener import typescriptListener
 from antlr4.tree.Trees import Trees
 
+#antlr4 -Dlanguage=Python3 .\typescript.g4 -visitor -o dist
+
 class TSfPrintListener(typescriptListener):
     pass
 
