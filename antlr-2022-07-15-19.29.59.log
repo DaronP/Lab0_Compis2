@@ -1,0 +1,137 @@
+2022-07-15 19:29:59:286 grammar LogManager.java:25 before: (COMBINED_GRAMMAR yapl (RULES (RULE program (BLOCK (ALT 'Program' Id (* (BLOCK (ALT declarationBlock) (ALT procedure))) 'Begin' statementList 'End' Id '.' EOF))) (RULE declarationBlock (BLOCK (ALT 'Declare' (* (BLOCK (ALT constDeclaration) (ALT varDeclaration) (ALT recordDeclaration)))))) (RULE constDeclaration (BLOCK (ALT 'Const' Id '=' literal ';'))) (RULE varDeclaration (BLOCK (ALT type Id (* (BLOCK (ALT ',' Id))) ';'))) (RULE recordDeclaration (BLOCK (ALT 'Record' Id (+ (BLOCK (ALT varDeclaration))) 'EndRecord' ';'))) (RULE procedure (BLOCK (ALT 'Procedure' returnType Id '(' (? (BLOCK (ALT param (* (BLOCK (ALT ',' param)))))) ')' block Id ';'))) (RULE param (BLOCK (ALT type Id))) (RULE procedureCall (BLOCK (ALT Id '(' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ')'))) (RULE returnStatement (BLOCK (ALT 'Return' (? (BLOCK (ALT expression)))))) (RULE block (BLOCK (ALT (? (BLOCK (ALT declarationBlock))) 'Begin' statementList 'End'))) (RULE statement (BLOCK (ALT (BLOCK (ALT assignment) (ALT procedureCall) (ALT returnStatement) (ALT ifStatement) (ALT whileStatement) (ALT writeStatement) (ALT block)) ';'))) (RULE statementList (BLOCK (ALT (* (BLOCK (ALT statement)))))) (RULE assignment (BLOCK (ALT fullIdentifier (= op ':=') expression))) (RULE ifStatement (BLOCK (ALT 'If' expression 'Then' statementList (? (BLOCK (ALT 'Else' (= elseStatementList statementList)))) 'EndIf'))) (RULE whileStatement (BLOCK (ALT 'While' expression 'Do' statementList 'EndWhile'))) (RULE writeStatement (BLOCK (ALT 'Write' String))) (RULE expression (BLOCK (ALT expression (= op (BLOCK (ALT MUL) (ALT DIV) (ALT MOD))) expression) (ALT expression (= op (BLOCK (ALT ADD) (ALT SUB))) expression) (ALT expression (= op (BLOCK (ALT LT) (ALT LE) (ALT GT) (ALT GE))) expression) (ALT expression (= op (BLOCK (ALT EQ) (ALT NE))) expression) (ALT expression (= op AND) expression) (ALT expression (= op OR) expression) (ALT (? (BLOCK (ALT (= sign (BLOCK (ALT ADD) (ALT SUB)))))) primaryExpr) (ALT 'new' baseType (* (BLOCK (ALT '[' expression ']')))))) (RULE primaryExpr (BLOCK (ALT literal) (ALT fullIdentifier) (ALT procedureCall) (ALT arrayLength) (ALT '(' expression ')'))) (RULE arrayLength (BLOCK (ALT '#' fullIdentifier))) (RULE fullIdentifier (BLOCK (ALT Id (? (BLOCK (ALT selector)))))) (RULE selector (BLOCK (ALT (BLOCK (ALT '[' expression ']') (ALT '.' Id)) (? (BLOCK (ALT selector)))))) (RULE returnType (BLOCK (ALT 'void') (ALT type))) (RULE type (BLOCK (ALT baseType (* (BLOCK (ALT '[' ']')))))) (RULE baseType (BLOCK (ALT 'int') (ALT 'bool') (ALT Id))) (RULE literal (BLOCK (ALT Boolean) (ALT Number))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GT (BLOCK (ALT '>'))) (RULE GE (BLOCK (ALT '>='))) (RULE EQ (BLOCK (ALT '=='))) (RULE NE (BLOCK (ALT '!='))) (RULE AND (BLOCK (ALT 'And'))) (RULE OR (BLOCK (ALT 'Or'))) (RULE ADD (BLOCK (ALT '+'))) (RULE SUB (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE MOD (BLOCK (ALT '%'))) (RULE Number (BLOCK (ALT (+ (BLOCK (ALT DIGIT)))))) (RULE Boolean (BLOCK (ALT 'True') (ALT 'False'))) (RULE String (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET [\r\n"]))) (ALT '\\"'))) '"'))) (RULE Id (BLOCK (ALT (BLOCK (ALT LETTER) (ALT '_')) (* (BLOCK (ALT LETTER) (ALT '_') (ALT DIGIT)))))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '/*' (* (BLOCK (ALT .))) '*/') skip))) (RULE WHITESPACE (BLOCK (LEXER_ALT_ACTION (ALT [ \t\r\n]) skip))) (RULE DIGIT (RULEMODIFIERS fragment) (BLOCK (ALT [0-9]))) (RULE LETTER (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z])))))
+2022-07-15 19:29:59:298 grammar LogManager.java:25 after: (COMBINED_GRAMMAR yapl (RULES (RULE program (BLOCK (ALT 'Program' Id (* (BLOCK (ALT declarationBlock) (ALT procedure))) 'Begin' statementList 'End' Id '.' EOF))) (RULE declarationBlock (BLOCK (ALT 'Declare' (* (BLOCK (ALT constDeclaration) (ALT varDeclaration) (ALT recordDeclaration)))))) (RULE constDeclaration (BLOCK (ALT 'Const' Id '=' literal ';'))) (RULE varDeclaration (BLOCK (ALT type Id (* (BLOCK (ALT ',' Id))) ';'))) (RULE recordDeclaration (BLOCK (ALT 'Record' Id (+ (BLOCK (ALT varDeclaration))) 'EndRecord' ';'))) (RULE procedure (BLOCK (ALT 'Procedure' returnType Id '(' (? (BLOCK (ALT param (* (BLOCK (ALT ',' param)))))) ')' block Id ';'))) (RULE param (BLOCK (ALT type Id))) (RULE procedureCall (BLOCK (ALT Id '(' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ')'))) (RULE returnStatement (BLOCK (ALT 'Return' (? (BLOCK (ALT expression)))))) (RULE block (BLOCK (ALT (? (BLOCK (ALT declarationBlock))) 'Begin' statementList 'End'))) (RULE statement (BLOCK (ALT (BLOCK (ALT assignment) (ALT procedureCall) (ALT returnStatement) (ALT ifStatement) (ALT whileStatement) (ALT writeStatement) (ALT block)) ';'))) (RULE statementList (BLOCK (ALT (* (BLOCK (ALT statement)))))) (RULE assignment (BLOCK (ALT fullIdentifier (= op ':=') expression))) (RULE ifStatement (BLOCK (ALT 'If' expression 'Then' statementList (? (BLOCK (ALT 'Else' (= elseStatementList statementList)))) 'EndIf'))) (RULE whileStatement (BLOCK (ALT 'While' expression 'Do' statementList 'EndWhile'))) (RULE writeStatement (BLOCK (ALT 'Write' String))) (RULE expression (BLOCK (ALT expression (= op (SET MUL DIV MOD)) expression) (ALT expression (= op (SET ADD SUB)) expression) (ALT expression (= op (SET LT LE GT GE)) expression) (ALT expression (= op (SET EQ NE)) expression) (ALT expression (= op AND) expression) (ALT expression (= op OR) expression) (ALT (? (BLOCK (ALT (= sign (SET ADD SUB))))) primaryExpr) (ALT 'new' baseType (* (BLOCK (ALT '[' expression ']')))))) (RULE primaryExpr (BLOCK (ALT literal) (ALT fullIdentifier) (ALT procedureCall) (ALT arrayLength) (ALT '(' expression ')'))) (RULE arrayLength (BLOCK (ALT '#' fullIdentifier))) (RULE fullIdentifier (BLOCK (ALT Id (? (BLOCK (ALT selector)))))) (RULE selector (BLOCK (ALT (BLOCK (ALT '[' expression ']') (ALT '.' Id)) (? (BLOCK (ALT selector)))))) (RULE returnType (BLOCK (ALT 'void') (ALT type))) (RULE type (BLOCK (ALT baseType (* (BLOCK (ALT '[' ']')))))) (RULE baseType (BLOCK (ALT (SET 'int' 'bool' Id)))) (RULE literal (BLOCK (ALT (SET Boolean Number)))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GT (BLOCK (ALT '>'))) (RULE GE (BLOCK (ALT '>='))) (RULE EQ (BLOCK (ALT '=='))) (RULE NE (BLOCK (ALT '!='))) (RULE AND (BLOCK (ALT 'And'))) (RULE OR (BLOCK (ALT 'Or'))) (RULE ADD (BLOCK (ALT '+'))) (RULE SUB (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE MOD (BLOCK (ALT '%'))) (RULE Number (BLOCK (ALT (+ (BLOCK (ALT DIGIT)))))) (RULE Boolean (BLOCK (ALT 'True') (ALT 'False'))) (RULE String (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET [\r\n"]))) (ALT '\\"'))) '"'))) (RULE Id (BLOCK (ALT (BLOCK (ALT LETTER) (ALT '_')) (* (BLOCK (ALT LETTER) (ALT '_') (ALT DIGIT)))))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '/*' (* (BLOCK (ALT .))) '*/') skip))) (RULE WHITESPACE (BLOCK (LEXER_ALT_ACTION (ALT [ \t\r\n]) skip))) (RULE DIGIT (RULEMODIFIERS fragment) (BLOCK (ALT [0-9]))) (RULE LETTER (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z])))))
+2022-07-15 19:29:59:314 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR yapl (RULES (RULE program (BLOCK (ALT 'Program' Id (* (BLOCK (ALT declarationBlock) (ALT procedure))) 'Begin' statementList 'End' Id '.' EOF))) (RULE declarationBlock (BLOCK (ALT 'Declare' (* (BLOCK (ALT constDeclaration) (ALT varDeclaration) (ALT recordDeclaration)))))) (RULE constDeclaration (BLOCK (ALT 'Const' Id '=' literal ';'))) (RULE varDeclaration (BLOCK (ALT type Id (* (BLOCK (ALT ',' Id))) ';'))) (RULE recordDeclaration (BLOCK (ALT 'Record' Id (+ (BLOCK (ALT varDeclaration))) 'EndRecord' ';'))) (RULE procedure (BLOCK (ALT 'Procedure' returnType Id '(' (? (BLOCK (ALT param (* (BLOCK (ALT ',' param)))))) ')' block Id ';'))) (RULE param (BLOCK (ALT type Id))) (RULE procedureCall (BLOCK (ALT Id '(' (? (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) ')'))) (RULE returnStatement (BLOCK (ALT 'Return' (? (BLOCK (ALT expression)))))) (RULE block (BLOCK (ALT (? (BLOCK (ALT declarationBlock))) 'Begin' statementList 'End'))) (RULE statement (BLOCK (ALT (BLOCK (ALT assignment) (ALT procedureCall) (ALT returnStatement) (ALT ifStatement) (ALT whileStatement) (ALT writeStatement) (ALT block)) ';'))) (RULE statementList (BLOCK (ALT (* (BLOCK (ALT statement)))))) (RULE assignment (BLOCK (ALT fullIdentifier (= op ':=') expression))) (RULE ifStatement (BLOCK (ALT 'If' expression 'Then' statementList (? (BLOCK (ALT 'Else' (= elseStatementList statementList)))) 'EndIf'))) (RULE whileStatement (BLOCK (ALT 'While' expression 'Do' statementList 'EndWhile'))) (RULE writeStatement (BLOCK (ALT 'Write' String))) (RULE expression (BLOCK (ALT expression (= op (SET MUL DIV MOD)) expression) (ALT expression (= op (SET ADD SUB)) expression) (ALT expression (= op (SET LT LE GT GE)) expression) (ALT expression (= op (SET EQ NE)) expression) (ALT expression (= op AND) expression) (ALT expression (= op OR) expression) (ALT (? (BLOCK (ALT (= sign (SET ADD SUB))))) primaryExpr) (ALT 'new' baseType (* (BLOCK (ALT '[' expression ']')))))) (RULE primaryExpr (BLOCK (ALT literal) (ALT fullIdentifier) (ALT procedureCall) (ALT arrayLength) (ALT '(' expression ')'))) (RULE arrayLength (BLOCK (ALT '#' fullIdentifier))) (RULE fullIdentifier (BLOCK (ALT Id (? (BLOCK (ALT selector)))))) (RULE selector (BLOCK (ALT (BLOCK (ALT '[' expression ']') (ALT '.' Id)) (? (BLOCK (ALT selector)))))) (RULE returnType (BLOCK (ALT 'void') (ALT type))) (RULE type (BLOCK (ALT baseType (* (BLOCK (ALT '[' ']')))))) (RULE baseType (BLOCK (ALT (SET 'int' 'bool' Id)))) (RULE literal (BLOCK (ALT (SET Boolean Number))))))
+2022-07-15 19:29:59:314 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR yaplLexer (RULES (RULE T__0 (BLOCK (ALT 'Program'))) (RULE T__1 (BLOCK (ALT 'Begin'))) (RULE T__2 (BLOCK (ALT 'End'))) (RULE T__3 (BLOCK (ALT '.'))) (RULE T__4 (BLOCK (ALT 'Declare'))) (RULE T__5 (BLOCK (ALT 'Const'))) (RULE T__6 (BLOCK (ALT '='))) (RULE T__7 (BLOCK (ALT ';'))) (RULE T__8 (BLOCK (ALT ','))) (RULE T__9 (BLOCK (ALT 'Record'))) (RULE T__10 (BLOCK (ALT 'EndRecord'))) (RULE T__11 (BLOCK (ALT 'Procedure'))) (RULE T__12 (BLOCK (ALT '('))) (RULE T__13 (BLOCK (ALT ')'))) (RULE T__14 (BLOCK (ALT 'Return'))) (RULE T__15 (BLOCK (ALT ':='))) (RULE T__16 (BLOCK (ALT 'If'))) (RULE T__17 (BLOCK (ALT 'Then'))) (RULE T__18 (BLOCK (ALT 'Else'))) (RULE T__19 (BLOCK (ALT 'EndIf'))) (RULE T__20 (BLOCK (ALT 'While'))) (RULE T__21 (BLOCK (ALT 'Do'))) (RULE T__22 (BLOCK (ALT 'EndWhile'))) (RULE T__23 (BLOCK (ALT 'Write'))) (RULE T__24 (BLOCK (ALT 'new'))) (RULE T__25 (BLOCK (ALT '['))) (RULE T__26 (BLOCK (ALT ']'))) (RULE T__27 (BLOCK (ALT '#'))) (RULE T__28 (BLOCK (ALT 'void'))) (RULE T__29 (BLOCK (ALT 'int'))) (RULE T__30 (BLOCK (ALT 'bool'))) (RULE LT (BLOCK (ALT '<'))) (RULE LE (BLOCK (ALT '<='))) (RULE GT (BLOCK (ALT '>'))) (RULE GE (BLOCK (ALT '>='))) (RULE EQ (BLOCK (ALT '=='))) (RULE NE (BLOCK (ALT '!='))) (RULE AND (BLOCK (ALT 'And'))) (RULE OR (BLOCK (ALT 'Or'))) (RULE ADD (BLOCK (ALT '+'))) (RULE SUB (BLOCK (ALT '-'))) (RULE MUL (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT '/'))) (RULE MOD (BLOCK (ALT '%'))) (RULE Number (BLOCK (ALT (+ (BLOCK (ALT DIGIT)))))) (RULE Boolean (BLOCK (ALT 'True') (ALT 'False'))) (RULE String (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET [\r\n"]))) (ALT '\\"'))) '"'))) (RULE Id (BLOCK (ALT (BLOCK (ALT LETTER) (ALT '_')) (* (BLOCK (ALT LETTER) (ALT '_') (ALT DIGIT)))))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '/*' (* (BLOCK (ALT .))) '*/') skip))) (RULE WHITESPACE (BLOCK (LEXER_ALT_ACTION (ALT [ \t\r\n]) skip))) (RULE DIGIT (RULEMODIFIERS fragment) (BLOCK (ALT [0-9]))) (RULE LETTER (RULEMODIFIERS fragment) (BLOCK (ALT [a-zA-Z])))))
+2022-07-15 19:29:59:519 left-recursion LogManager.java:25 expression
+    :   ( {} sign=(ADD<tokenIndex=401> | SUB<tokenIndex=405>)? primaryExpr<tokenIndex=409>  
+        | 'new'<tokenIndex=416> baseType<tokenIndex=418> ('['<tokenIndex=421> expression<tokenIndex=423> ']'<tokenIndex=425>)*  
+        )
+        (
+          {self.precpred(self._ctx, 8)}?<p=8> op=(MUL<tokenIndex=289> | DIV<tokenIndex=293> | MOD<tokenIndex=297>) expression<tokenIndex=300,p=9>
+                  | {self.precpred(self._ctx, 7)}?<p=7> op=(ADD<tokenIndex=312> | SUB<tokenIndex=316>) expression<tokenIndex=319,p=8>
+                  | {self.precpred(self._ctx, 6)}?<p=6> op=(LT<tokenIndex=331> | LE<tokenIndex=335> | GT<tokenIndex=339> | GE<tokenIndex=343>) expression<tokenIndex=346,p=7>
+                  | {self.precpred(self._ctx, 5)}?<p=5> op=(EQ<tokenIndex=358> | NE<tokenIndex=362>) expression<tokenIndex=365,p=6>
+                  | {self.precpred(self._ctx, 4)}?<p=4> op=AND<tokenIndex=376> expression<tokenIndex=378,p=5>
+                  | {self.precpred(self._ctx, 3)}?<p=3> op=OR<tokenIndex=389> expression<tokenIndex=391,p=4>
+        )*
+    ;
+2022-07-15 19:29:59:524 grammar LogManager.java:25 added: (RULE expression (BLOCK (ALT (BLOCK (ALT {} (? (BLOCK (ALT (= sign (SET (ADD (ELEMENT_OPTIONS (= tokenIndex 401))) (SUB (ELEMENT_OPTIONS (= tokenIndex 405)))))))) (primaryExpr (ELEMENT_OPTIONS (= tokenIndex 409)))) (ALT ('new' (ELEMENT_OPTIONS (= tokenIndex 416))) (baseType (ELEMENT_OPTIONS (= tokenIndex 418))) (* (BLOCK (ALT ('[' (ELEMENT_OPTIONS (= tokenIndex 421))) (expression (ELEMENT_OPTIONS (= tokenIndex 423))) (']' (ELEMENT_OPTIONS (= tokenIndex 425)))))))) (* (BLOCK (ALT ({self.precpred(self._ctx, 8)}? (ELEMENT_OPTIONS (= p 8))) (= op (SET (MUL (ELEMENT_OPTIONS (= tokenIndex 289))) (DIV (ELEMENT_OPTIONS (= tokenIndex 293))) (MOD (ELEMENT_OPTIONS (= tokenIndex 297))))) (expression (ELEMENT_OPTIONS (= tokenIndex 300) (= p 9)))) (ALT ({self.precpred(self._ctx, 7)}? (ELEMENT_OPTIONS (= p 7))) (= op (SET (ADD (ELEMENT_OPTIONS (= tokenIndex 312))) (SUB (ELEMENT_OPTIONS (= tokenIndex 316))))) (expression (ELEMENT_OPTIONS (= tokenIndex 319) (= p 8)))) (ALT ({self.precpred(self._ctx, 6)}? (ELEMENT_OPTIONS (= p 6))) (= op (SET (LT (ELEMENT_OPTIONS (= tokenIndex 331))) (LE (ELEMENT_OPTIONS (= tokenIndex 335))) (GT (ELEMENT_OPTIONS (= tokenIndex 339))) (GE (ELEMENT_OPTIONS (= tokenIndex 343))))) (expression (ELEMENT_OPTIONS (= tokenIndex 346) (= p 7)))) (ALT ({self.precpred(self._ctx, 5)}? (ELEMENT_OPTIONS (= p 5))) (= op (SET (EQ (ELEMENT_OPTIONS (= tokenIndex 358))) (NE (ELEMENT_OPTIONS (= tokenIndex 362))))) (expression (ELEMENT_OPTIONS (= tokenIndex 365) (= p 6)))) (ALT ({self.precpred(self._ctx, 4)}? (ELEMENT_OPTIONS (= p 4))) (= op (AND (ELEMENT_OPTIONS (= tokenIndex 376)))) (expression (ELEMENT_OPTIONS (= tokenIndex 378) (= p 5)))) (ALT ({self.precpred(self._ctx, 3)}? (ELEMENT_OPTIONS (= p 3))) (= op (OR (ELEMENT_OPTIONS (= tokenIndex 389)))) (expression (ELEMENT_OPTIONS (= tokenIndex 391) (= p 4)))))))))
+2022-07-15 19:29:59:527 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, LT=32, LE=33, GT=34, GE=35, EQ=36, NE=37, AND=38, OR=39, ADD=40, SUB=41, MUL=42, DIV=43, MOD=44, Number=45, Boolean=46, String=47, Id=48, COMMENT=49, WHITESPACE=50}
+2022-07-15 19:29:59:527 semantics LogManager.java:25 strings={'Program'=1, 'Begin'=2, 'End'=3, '.'=4, 'Declare'=5, 'Const'=6, '='=7, ';'=8, ','=9, 'Record'=10, 'EndRecord'=11, 'Procedure'=12, '('=13, ')'=14, 'Return'=15, ':='=16, 'If'=17, 'Then'=18, 'Else'=19, 'EndIf'=20, 'While'=21, 'Do'=22, 'EndWhile'=23, 'Write'=24, 'new'=25, '['=26, ']'=27, '#'=28, 'void'=29, 'int'=30, 'bool'=31, '<'=32, '<='=33, '>'=34, '>='=35, '=='=36, '!='=37, 'And'=38, 'Or'=39, '+'=40, '-'=41, '*'=42, '/'=43, '%'=44}
+2022-07-15 19:29:59:539 LL1 LogManager.java:25 
+DECISION 0 in rule program
+2022-07-15 19:29:59:539 LL1 LogManager.java:25 look=[5, 12]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 1 in rule program
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[{5, 12}, 2]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 2 in rule declarationBlock
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[6, {30..31, 48}, 10]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 3 in rule declarationBlock
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[{6, 10, 30..31, 48}, {2, 5, 12}]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 4 in rule varDeclaration
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[9, 8]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 5 in rule recordDeclaration
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[{30..31, 48}, 11]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 6 in rule procedure
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[9, 14]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 7 in rule procedure
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[{30..31, 48}, 14]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 8 in rule procedureCall
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[9, 14]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 9 in rule procedureCall
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[{13, 25, 28, 40..41, 45..46, 48}, 14]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 10 in rule returnStatement
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[{13, 25, 28, 40..41, 45..46, 48}, 8]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 11 in rule block
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[5, 2]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 12 in rule statement
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[48, 48, 15, 17, 21, 24, {2, 5}]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? false
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 13 in rule statementList
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[{2, 5, 15, 17, 21, 24, 48}, {3, 19..20, 23}]
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 
+DECISION 14 in rule ifStatement
+2022-07-15 19:29:59:540 LL1 LogManager.java:25 look=[19, 20]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 15 in rule expression
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[{40..41}, {13, 28, 45..46, 48}]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 16 in rule expression
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[26, null]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? false
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 17 in rule expression
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[{13, 28, 40..41, 45..46, 48}, 25]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 18 in rule expression
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[null, null, null, null, null, null]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? false
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 19 in rule expression
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[null, null]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? false
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 20 in rule primaryExpr
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[{45..46}, 48, 48, 28, 13]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? false
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 21 in rule fullIdentifier
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[{4, 26}, null]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? false
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 22 in rule selector
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[26, 4]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 23 in rule selector
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[{4, 26}, null]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? false
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 24 in rule returnType
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[29, {30..31, 48}]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 
+DECISION 25 in rule type
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 look=[26, 48]
+2022-07-15 19:29:59:541 LL1 LogManager.java:25 LL(1)? true
+2022-07-15 19:29:59:566 action-translator LogManager.java:25 translate 
+2022-07-15 19:29:59:567 action-translator LogManager.java:25 translate self.precpred(self._ctx, 8)
+2022-07-15 19:29:59:567 action-translator LogManager.java:25 translate self.precpred(self._ctx, 7)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 6)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 5)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 4)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 3)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 8)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 7)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 6)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 5)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 4)
+2022-07-15 19:29:59:568 action-translator LogManager.java:25 translate self.precpred(self._ctx, 3)

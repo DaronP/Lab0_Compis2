@@ -1,0 +1,23 @@
+/* 
+ * Fibonacci numbers
+ * recursive procedures
+ */
+Program Fibonacci
+
+Procedure int fib(int k)
+Begin
+    If k < 2 Then
+        Return k;
+    EndIf;
+    Return fib(k-1) + fib(k-2);
+End fib;
+
+Begin
+    Write "fib(2) = ";
+    writeint(fib(2));
+    Write " (1 expected)"; writeln();
+    
+    Write "fib(12) = ";
+    writeint(fib(12));
+    Write " (144 expected)"; writeln();
+End Fibonacci.
